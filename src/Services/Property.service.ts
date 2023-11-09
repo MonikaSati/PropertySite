@@ -27,10 +27,10 @@ export class PropertyService{
         })
     }
     setPrimaryImage(prid: number, imgname: string){
-        const header= new HttpHeaders({
-            Authorization: "Bearer" + JSON.parse(localStorage.getItem("User"))
-        })
-     return this.http.post("https://localhost:7110/api/Property/setpImage/" + prid+ "/"+imgname,{Headers: header}  )
+        const header=  { headers: new HttpHeaders({
+            Authorization: "Bearer " + JSON.parse(localStorage.getItem('User'))
+        })}
+     return this.http.post("https://localhost:7110/api/Property/setpImage/" + prid+ "/"+imgname,{},header  )
    
     }
     uploadimage(id: number, files: File[]){

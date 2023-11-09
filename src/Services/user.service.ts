@@ -20,4 +20,8 @@ if(data){
 }
  })
     }
+
+    registerUser(data: any ){
+       return  this.http.post("https://localhost:7110/api/Account/Register", data)
+    }
 }
