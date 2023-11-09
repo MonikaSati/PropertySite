@@ -1,0 +1,76 @@
+<div class="row inmiddledetail" *ngIf="property">
+    <div class="col-sm-5">
+        <div class="propdetail">
+            <div style="border-bottom:1px solid rgb(240, 233, 233) ;">
+                <ng-container *ngIf="primaryimage!= null; else defaultpic">
+                    <img 
+                    [src]="primaryimage.image">
+                </ng-container>
+                
+                  <ng-template #defaultpic>
+                    <img src="/assets/Images/house.jpg">
+                  </ng-template>
+                <h6 *ngIf="property.sellRent==0">Sell</h6>
+                <h1 style="color: blue;">{{property.name}}</h1>
+                <h6>2BHK Apartment @ ${{property.price}}</h6>
+                <h6>In {{property.city}}</h6>
+            </div>
+
+            <div style="border-bottom: 1px solid rgb(240, 233, 233);">
+                <h6>Build Area:{{property.builtArea}}</h6>
+                <h6>Carpet Area:{{property.carpetAreat}}</h6>
+                <h6>Furnishing Type: {{property.furnishing}}</h6>
+            </div>
+            <div>
+                <button class="btn btn-primary" style="margin: 5px; background-color: blue;">Like</button>
+                <button class="btn btn-primary" style="margin: 5px; background-color: green;">Message</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-7 nopadding" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="overview()" zoomin>Overview</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="picture()">Photo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="upload()">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="Address()">Address</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <div [ngSwitch]="overviewstatus">
+            <div *ngSwitchCase="'default'">
+                <app-property-overviews [property]="property" [propertyage]="propertyage">
+                </app-property-overviews>
+            </div>
+            <div *ngSwitchCase="'Address'">
+                <h1 style="justify-content: center;">
+                    Address
+                </h1>
+                <span>property Address</span>
+            </div>
+            <div *ngSwitchCase="'photo'">
+                <app-property-gallery [images] ="images"></app-property-gallery>
+            </div>
+            <div *ngSwitchCase="'Upload'">
+                <div> <h6 style="margin-top:15px;margin-left: 5px;">Upload Picture</h6>
+                    <div>
+                        <input type="file" class="form-control" style="width:90%; margin-left: 10px;"
+                            id="exampleTextBox"  (change)="onphotoupload($event)" multiple>
+                   </div>
+                <app-set-primary-image [property]="property" (primeimage)="setprimpic($event)"></app-set-primary-image>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "../node_modules/@ng-bootstrap/ng-bootstrap"; */
+/* @import '../node_modules/ng2-datepicker/lib/    ng2-datepicker/lib/style/material.css'; */
+
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.zoom-in {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Adding a smooth transition effect */
+  }
+  
+  .zoom-in:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5) /* Increasing the scale on hover */
+  }
+  .inmiddle{
+    border: 1px solid grey;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 30px;
+  }
+  .activate{
+   text-decoration:underline;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bs-datepicker {
+  background-color:  lightblue;
+  border: 1px solid #ff0080;
+  margin-left:25%;
+  width:400px;
+  
+}
+.bs-datepicker-container .selected{
+  background-color: blue;
+}
+.bs-datepicker-body table{
+  width: 400px;
+  
+}
+.bs-datepicker-body table tr td {
+  margin: 5px;
+}
+.bs-datepicker-body table thead tr  {
+  margin-right: 5px;
+}

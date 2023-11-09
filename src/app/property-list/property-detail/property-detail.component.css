@@ -1,0 +1,24 @@
+
+.propdetail{
+    border-right: 1px solid rgb(240, 233, 233);
+}
+a{
+    color: blue;
+    cursor: pointer !important;
+}
+.nopadding{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+img{
+    height: 300px;
+    width: 400px;
+    border:1px solid black
+}
+.inmiddledetail{
+    border: 1px solid grey;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    margin-left: 25%;
+    margin-right: 10%;
+    margin-top: 30px;
+  }

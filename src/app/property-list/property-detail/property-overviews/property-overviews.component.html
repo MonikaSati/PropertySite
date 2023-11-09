@@ -1,0 +1,20 @@
+<div *ngIf="property">
+    <h1>Overview</h1>
+    <div class="col-sm-6">
+        <h6>Project Name</h6>
+        {{property.name}}
+        <span></span>
+        <h6>Floor Number</h6>
+        <span>{{property.floorNo}}</span>
+        <h6>Total Floor</h6>
+        <span>{{property.totalFloor}}</span>
+        <h6 *ngIf="!property.readyToMove">Possession Date  
+        {{property.possesionDate | date
+        }}</h6>
+        <h6 *ngIf="property.readyToMove">Establishment Date  
+            {{property.possesionDate | date
+            }}</h6>
+        <h6>Age of Property</h6>
+        <span>{{propertyage}}</span>
+    </div>
+</div>

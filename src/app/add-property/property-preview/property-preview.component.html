@@ -1,0 +1,20 @@
+<div class="propertyprivew">
+    <div>
+    
+    <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg">
+    </div>
+    <div >
+       <h1>{{Bhk}}  Bhk {{properttype}}</h1>
+    </div>
+    <div style="margin-bottom: 5px;">
+            <h6>in {{propname}} {{city}}</h6>
+    </div>
+    <div  style="margin-bottom: 5px;">
+        <h6>Furnish Type: {{furnish}} | <span *ngIf="readytomove==1">Ready To Move </span>
+          <span *ngIf="readytomove==0">Possession: {{pdate | date}} </span> </h6>
+    </div>
+    <div  style="margin-bottom: 5px;">
+      <h6>Price: {{rent}} USD| Area:  {{area}} Sqt.Feet</h6>
+    </div>
+
+</div>

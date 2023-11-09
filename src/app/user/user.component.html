@@ -1,0 +1,41 @@
+<!-- <div class="logindiv">
+    <form [formGroup]="loginform" #login (ngSubmit)="loginuser(login)">
+        <h6 style="margin-top:15px;margin-left: 5px;">Enter your Name</h6>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="text" formControlName="name" class="form-control" style="width:90%; margin-left: 10px;"
+          id="exampleTextBox">
+        </div>
+        <h6 style="margin-top:15px;margin-left: 5px;">Enter your Password</h6>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="text" formControlName="password" class="form-control" style="width:90%; margin-left: 10px;"
+          id="exampleTextBox">
+        </div>
+        <div>
+            <button >Submit</button>
+        </div>
+    </form>
+</div> -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Login
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginform"  (ngSubmit)="loginuser()">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="username" formControlName="name"  required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password"formControlName="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,223 @@
+<div>
+    <div class="row">
+        <div class="col-sm-8 propertydetail">
+            <h1 style="background-color: lightblue;">Add Property</h1>
+            <div style="border: 1px solid lightgrey;">
+                <div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" style="cursor: pointer;" (click)="defaults()">Basic</a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="cursor: pointer;" (click)="price()">Price/Area</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="cursor: pointer;"(click)="order()">OrderDetails</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="cursor: pointer;"  (click)="photo()">Photos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="cursor: pointer;" (click)="Address()">Address</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <form [formGroup]="propertyform" #prform (ngSubmit)="onsubmit(prform)">
+                    <div [ngSwitch]="navitem">
+                        <div *ngSwitchCase="'default'">
+                            <h6 style="margin: 5px;">Property Kind</h6>
+
+                            <!-- <button  class="btn btn-primary propertytypebtn" formControlName="sellrent">Sell</button>
+                            <button  class="btn btn-primary propertytypebtn" formControlName="sellrent">Rent</button> -->
+                            <!-- <input type="radio" formControlName="sellrent" value="sell"> Sell
+                            <input type="radio" formControlName="sellrent" value="rent"> Rent -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" formControlName="sellrent" id="option1"
+                                    autocomplete="off" value="0">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="option1">Sell</label>
+
+                                <input type="radio" class="btn-check" formControlName="sellrent" id="option2"
+                                    autocomplete="off" value="1">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="option2">Rent</label>
+                            </div>
+                            <!--  -->
+                            <h6 style="margin-top:15px;margin-left: 5px;">Property Type</h6>
+                            <!-- <div >
+                       <button *ngFor="let type of propertytype" class="btn btn-primary propertytypebtn" [value]="type.id">{{type.name}}</button>
+                      </div> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <ng-container *ngFor="let type of propertytype">
+                                    <input type="radio" class="btn-check" formControlName="prptype"
+                                        [id]=" 'pr' + type.id" autocomplete="off" [value]="type.id"
+                                        (click)="onclick(type.name)">
+                                    <label class="btn btn-outline-secondary propertytypebtn"
+                                        [for]="'pr' + type.id">{{type.name}}</label>
+                                </ng-container>
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">BHK</h6>
+                            <!-- <div >
+                        <button *ngFor="let i of bhk" class="btn btn-primary propertytypebtn" formControlName="bhks" [value]="i">{{i}}</button>
+                       </div> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <ng-container *ngFor="let i of bhk">
+                                    <input type="radio" class="btn-check" formControlName="bhks" [id]="i-1"
+                                        autocomplete="off" [value]="i">
+                                    <label class="btn btn-outline-secondary propertytypebtn" [for]="i-1">{{i}}</label>
+                                </ng-container>
+                            </div>
+
+                            <h6 style="margin-top:15px;margin-left: 5px;">Furnishing Type</h6>
+                            <!-- <div >
+                        <button *ngFor="let type of furnishingtype" class="btn btn-primary propertytypebtn" [value]="type.id">{{type.name}}</button>
+                       </div> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <ng-container *ngFor="let fur of furnishingtype">
+                                    <input type="radio" class="btn-check" formControlName="furnishtype" [id]="fur.id"
+                                        autocomplete="off" [value]="fur.id" (click)="furnichclick(fur.name)">
+                                    <label class="btn btn-outline-secondary propertytypebtn"
+                                        [for]="fur.id">{{fur.name}}</label>
+                                </ng-container>
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">in Building/Society/Project</h6>
+                            <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                id="exampleTextBox" formControlName="propertyname" (input)="textinput($event)">
+                            <h6 style="margin-top:15px;margin-left: 5px;">City</h6>
+                            <div>
+                                <select class="form-select" #cityname id="exampleSelect"
+                                    style="width:90%; margin-left: 10px;" formControlName="city"
+                                    (change)="oncityclick(cityname.options[cityname.options.selectedIndex].text)">
+                                    <!-- <option selected [value]="default.id" >{{default.name}}</option> -->
+                                    <option selected>{{default}}</option>
+                                    <option *ngFor="let c of city" [value]="c.id">{{c.name}}</option>
+
+                                </select>
+                            </div>
+                            <div><button class="btn btn-primary" style="width:90%; margin-left: 10px; margin-top: 10px;"
+                                    (click)="basictonext()">Next</button></div>
+
+                        </div>
+                        <!-- for order detail portion -->
+                        <div *ngSwitchCase="'order'">
+                            <h6 style="margin: 5px;">Ready To Move</h6>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" formControlName="readymove" id="ready1"
+                                    autocomplete="off" value="false" (click)="readytomove=0">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="ready1">No</label>
+
+                                <input type="radio" class="btn-check" formControlName="readymove" id="ready2"
+                                    autocomplete="off" value="true" (click)="readytomove=1">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="ready2">Yes</label>
+                            </div>
+                            <ng-container *ngIf="readytomove===0">
+                            <h6 style="margin-top: 15px;">Add Possession</h6>
+                            <div> 
+                                <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="selectedDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>  -->
+                                <input bsDatepicker  placeholder="Choose a date" formControlName="possesiondate">
+                                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker> -->
+                              </div>
+                            </ng-container>
+                            <h6 style="margin-top: 15px;">Gated Community</h6>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" formControlName="gated" id="option1"
+                                    autocomplete="off" value="0">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="option1">Yes</label>
+
+                                <input type="radio" class="btn-check" formControlName="gated" id="option2"
+                                    autocomplete="off" value="1">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="option2">No</label>
+                            </div>
+                            <h6 style="margin-top: 15px;">Main Entrance</h6>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" formControlName="mainentrance" id="main1"
+                                    autocomplete="off" value="0">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="main1">Sell</label>
+
+                                <input type="radio" class="btn-check" formControlName="mainentrance" id="main2"
+                                    autocomplete="off" value="1">
+                                <label class="btn btn-outline-secondary propertytypebtn" for="main2">Rent</label>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary"
+                                    style="width:90%; margin-left: 10px; margin-top: 10px;">Next</button>
+                                <button class="btn btn-primary"
+                                    style="width:90%; margin-left: 10px; margin-top: 10px;">Back</button>
+
+                            </div>
+                        </div>
+                        <!-- for price/area portion -->
+                        <div *ngSwitchCase="'price'">
+
+                            <h6 style="margin: 5px;">Rent(In USD)</h6>
+                            <div>
+                                <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="Rent" (input)="rentinput($event)">
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">Security(In USD)</h6>
+                            <div>
+                                <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="Security">
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">Maintenance(In USD)</h6>
+                            <div>
+                                <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="Maintenance">
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">Built Area(in Sqr.Feet)</h6>
+                            <div>
+                                <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="BuiltArea" (input)="areainput($event)">
+                            </div>
+                            <h6 style="margin-top:15px;margin-left: 5px;">Carpet Area(in Sqr.Feet)</h6>
+                            <div>
+                                <input type="text" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="CarpetArea">
+                            </div>
+                            <div>
+                                <button class="btn btn-primary"
+                                    style="width:90%; margin-left: 10px; margin-top: 10px;">Next</button>
+                                <button class="btn btn-primary"
+                                    style="width:90%; margin-left: 10px; margin-top: 10px;">Back</button>
+                                    <button type="submit"class="btn btn-primary"
+                                    style="width:90%; margin-left: 10px; margin-top: 10px;">Submit</button>
+
+                            </div>
+                            
+                        </div>
+                        <!-- for photo portion -->
+                        <!-- <div *ngSwitchCase="'photo'">
+                            <h6 style="margin-top:15px;margin-left: 5px;">Upload Picture</h6>
+                            <div>
+                                <input type="file" class="form-control" style="width:90%; margin-left: 10px;"
+                                    id="exampleTextBox" formControlName="propertImages">
+                            </div>
+                        </div> -->
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-sm-4" class="preview">
+            <h1 style="background-color: lightblue;">Property Preview</h1>
+            <app-property-preview [Bhk]="propertyform.get('bhks').value" [properttype]="proptype" [city]="cityname"
+                [furnish]="furnish" [propname]="propname" [area]="area" [rent]="rent"
+                [readytomove]="readytomove" [pdate]="propertyform.get('possesiondate').value"></app-property-preview>
+
+
+
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,10 @@
+<div  >
+  <ng-container *ngFor="let prop of property.propertImages">
+    <img  style="height:150px; width: 150px; padding: 10px;"  [src]="prop.image">
+ 
+ 
+    <button class="btn btn-outline-secondary" (click)="setmain(prop)" >Main</button>
+    <button class="fas fa-trash text-danger fa-2x" (click) ="delete(prop.image)" style="background-color: aliceblue; border: none; margin: 10px;"></button>
+
+  </ng-container>
+ </div>
