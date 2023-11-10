@@ -32,6 +32,7 @@ import { PropertyGalleryComponent } from './property-list/property-detail/proper
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { SetPrimaryImageComponent } from './property-list/property-detail/set-primary-image/set-primary-image.component';
 import { RegisterUserComponent } from './user/register-user/register-user.component';
+import { DemoComponentComponent } from './demo-component/demo-component.component';
 @NgModule({
   declarations: [
 
@@ -50,6 +51,7 @@ import { RegisterUserComponent } from './user/register-user/register-user.compon
     PropertyGalleryComponent,
     SetPrimaryImageComponent,
     RegisterUserComponent,
+    DemoComponentComponent,
 //    PropertyGalleryComponent,  
 
   ],
