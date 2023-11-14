@@ -9,7 +9,7 @@ export class PropertytypeService{
      baseurl="https://localhost:7110/Proprtytype"
 
     getPropertytypes(){
-      return  this.http.get<PropertyType[]>(this.baseurl)
+      return  this.http.get<PropertyType>(this.baseurl)
     }
 
 }

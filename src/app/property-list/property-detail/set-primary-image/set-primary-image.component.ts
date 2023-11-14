@@ -12,7 +12,7 @@ import { PropertyService } from 'src/Services/Property.service';
 export class SetPrimaryImageComponent {
   constructor(private proprtyservice: PropertyService, private activeroute: ActivatedRoute){}
 @Input()
-property: Property
+property: any
 @Input()
 uploadedimage
 pId

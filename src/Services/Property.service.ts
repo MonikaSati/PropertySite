@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
-import { Property } from "../Models/Property";
+import { Property, Singleprop, propwithid } from "../Models/Property";
 
 @Injectable({
     providedIn:"root"
@@ -9,13 +9,18 @@ export class PropertyService{
     eventp=new EventEmitter<any>()
     constructor(private http:HttpClient){}
     getPropertylist(){
-    return this.http.get<Property[]>('https://localhost:7110/api/Property')
+        const headeroption={ headers:  new HttpHeaders({
+            Authorization: "Bearer " + JSON.parse(localStorage.getItem('User'))
+            
+        })}
+    return this.http.get<propwithid>('https://localhost:7110/api/Property',headeroption)
     }
 
     getProperty(id: number){
-       return this.http.get<Property>(`https://localhost:7110/api/Property/${id}`)
+       return this.http.get<Singleprop>(`https://localhost:7110/api/Property/${id}`)
     }
     addProperty(data: any){
+        console.log("data from service", data)
         const headeroption={ headers:  new HttpHeaders({
             Authorization: "Bearer " + JSON.parse(localStorage.getItem('User'))
             
@@ -40,12 +45,22 @@ export class PropertyService{
             formdata.append("file", files[i], files[i].name)
            
         }
+        const header={
+             headers: new HttpHeaders({
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("User"))
+             })
+        }
   
        
   
-            return this.http.post("https://localhost:7110/api/Property/Upload/" + id, formdata)
+            return this.http.post("https://localhost:7110/api/Property/Upload/" + id, formdata,header)
     }
     deletepic(id:number,image: string){
-       return this.http.post("https://localhost:7110/api/Property/PicDelete/" +id +"/"+image,{})
+        const header={
+            headers: new HttpHeaders({
+       Authorization: "Bearer " + JSON.parse(localStorage.getItem("User"))
+            })
+       }
+       return this.http.post("https://localhost:7110/api/Property/PicDelete/" +id +"/"+image,{},header)
     }
 }

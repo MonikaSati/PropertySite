@@ -194,13 +194,13 @@
                             
                         </div>
                         <!-- for photo portion -->
-                        <!-- <div *ngSwitchCase="'photo'">
+                        <div *ngSwitchCase="'photo'">
                             <h6 style="margin-top:15px;margin-left: 5px;">Upload Picture</h6>
                             <div>
                                 <input type="file" class="form-control" style="width:90%; margin-left: 10px;"
-                                    id="exampleTextBox" formControlName="propertImages">
+                                    id="exampleTextBox" (change)="onfilechange($event)">
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     
                 </form>
@@ -211,7 +211,7 @@
         <div class="col-sm-4" class="preview">
             <h1 style="background-color: lightblue;">Property Preview</h1>
             <app-property-preview [Bhk]="propertyform.get('bhks').value" [properttype]="proptype" [city]="cityname"
-                [furnish]="furnish" [propname]="propname" [area]="area" [rent]="rent"
+                [furnish]="furnish" [propname]="propname" [area]="area" [rent]="rent" [imagepr]="imagepr"
                 [readytomove]="readytomove" [pdate]="propertyform.get('possesiondate').value"></app-property-preview>
 
 

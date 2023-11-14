@@ -18,5 +18,6 @@ constructor(private userservice: UserService){}
     }
     loginuser(){
       this.userservice.getUser(this.loginform.value)
+      
     }
 }

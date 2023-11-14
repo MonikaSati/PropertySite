@@ -44,6 +44,35 @@ export interface Property{
       propertImages?:Images[]
       
 }
+export interface propwithid{
+  $id: number,
+  $values:Property[]
+}
+export interface imgs{
+$id: number,
+$values:Images[]
+}
+export interface Singleprop{
+  $id:number,
+  name: string,
+  description:string,
+  propertytype:string,
+  city: string,
+  furnishing:string,
+  price:number,
+   sellRent: number,
+   possesionDate: Date,
+   readyToMove:boolean,
+   builtArea:number,
+   carpetAreat: null,
+     floorNo: number
+     totalFloor: number,
+     security: number,
+     maintenance: number,
+     gated: number,
+     address2: string,
+     propertImages?:imgs
+}
 export class Propertyclss{
  
             // public int SellRent { get; set; }
@@ -60,18 +89,18 @@ export class Propertyclss{
        
             // public int CityId { get; set; }
           
-           Name: string="";
-  
-    PropertyTypeId:string=""
+           Name: string
+  Id:number
+    PropertyTypeId:string
     CityId: number=0;
     FurnishingTypeId:number=0
     Price:number=0
     SellRent: number=0
-    PossesionDate: Date
+    PossesionDate: string
     ReadyToMove:boolean
     BuiltArea: number=0;
     Address: string="this is an address";
     BHK:number=0;
-    propertImages?:Images[]
+    PropertImages?:File[]
     
 }

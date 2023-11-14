@@ -10,13 +10,17 @@ import { PropertyService } from 'src/Services/Property.service';
 })
 export class PropertyListComponent {
 constructor(private propertyservice: PropertyService, private route: Router){}
-propertylist: Property[] |undefined
+propertylist={
+  "$Id": 1,
+  "$values":[]
+}
+// Property[] |undefined
 primimage
 ngOnInit(){
   console.log("fromproduct list")
  this.propertyservice.getPropertylist().subscribe((data)=>{
-  this.propertylist= data
-  console.log(this.propertylist)
+  this.propertylist.$values= data.$values
+console.log(this.propertylist)  //console.log(this.propertylist)
 
  })
 }

@@ -1,0 +1,23 @@
+[33mcommit b65048b4467e6a5d8247a81f62ca83b7d18831a2[m[33m ([m[1;36mHEAD -> [m[1;32mdemobranch[m[33m, [m[1;31morigin/demobranch[m[33m)[m
+Author: MonikaC <monikachandra2791@gmail.com>
+Date:   Fri Nov 10 09:39:59 2023 +0100
+
+    created new branch with demo component
+
+[33mcommit 181069f3fc4e98fb8a5d4d95330c1502b139a6d3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: MonikaC <monikachandra2791@gmail.com>
+Date:   Thu Nov 9 10:16:04 2023 +0100
+
+    register component and authentication
+
+[33mcommit bd5ccbb7dd1e921b0019a8185ad10b7ff7ae1171[m
+Author: MonikaC <monikachandra2791@gmail.com>
+Date:   Thu Nov 9 08:16:55 2023 +0100
+
+    first commit
+
+[33mcommit df80f8932a033fffd6ad761c034d72cbefadec48[m
+Author: MonikaC <monikachandra2791@gmail.com>
+Date:   Fri Oct 20 15:35:24 2023 +0200
+
+    initial commit

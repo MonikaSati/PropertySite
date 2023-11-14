@@ -1,4 +1,8 @@
 export interface PropertyType{
-id: number;
-name: string;
+$id: number;
+$values: PropType[];
+}
+export interface PropType{
+    id:number,
+    name: string
 }

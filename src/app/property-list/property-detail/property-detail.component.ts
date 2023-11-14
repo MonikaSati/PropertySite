@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from 'src/Models/Property';
 import { PropertyService } from 'src/Services/Property.service';
 import{Images} from "src/Models/Image"
@@ -10,8 +10,8 @@ import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
   styleUrls: ['./property-detail.component.css']
 })
 export class PropertyDetailComponent {
-constructor(private activateroute: ActivatedRoute, private propertyservice: PropertyService){}
-property: Property| undefined 
+constructor(private activateroute: ActivatedRoute, private propertyservice: PropertyService, private route: Router){}
+property:any
 overviewstatus='default';
 sellrent:number|undefined
 id: any
@@ -24,14 +24,15 @@ ngOnInit(){
   this.activateroute.paramMap.subscribe((data)=>{
 this.id= data.get('id')
 this.propertyservice.getProperty(this.id).subscribe((data)=>{
+  console.log("detail", data)
   this.property= data;
-  this.images= this.property.propertImages
+  this.images= this.property.propertImages.$values
   let filterdimages= this.images.filter((img)=>img.isprimary==true)
   if(filterdimages)
   {
     this.primaryimage= filterdimages[0]
   }
-  console.log(this.primaryimage.image)
+
   this.propertyage=this.calculateage(this.property.possesionDate)
 })
 
@@ -68,6 +69,9 @@ this.propertyservice.uploadimage( this.id, this.propertImages).subscribe((result
   })
   
 })
+}
+oneditclick(){
+  this.route.navigate(['Add-property'])
 }
 calculateage(estdate: Date){
   let today= new Date();

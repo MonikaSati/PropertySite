@@ -26,5 +26,6 @@ export class PropertyPreviewComponent {
   readytomove
   @Input()
   pdate
-
+@Input()
+imagepr
 }

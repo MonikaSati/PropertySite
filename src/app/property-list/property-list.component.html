@@ -1,8 +1,8 @@
 <div class="row propetydiv">
-    <div class="col-sm-3" *ngFor="let prop of propertylist" (click)="onpropclick(prop.id)" zoomin>
+    <div class="col-sm-3" *ngFor="let prop of propertylist.$values" (click)="onpropclick(prop.id)" zoomin>
         <div>
-            <ng-container *ngIf="prop.propertImages.length>0; else dimage">
-                <img [src]="prop.propertImages[0].image">
+            <ng-container *ngIf="prop.propertImages.$values.length>0; else dimage">
+                <img [src]="prop.propertImages.$values[0].image">
             </ng-container>
             <ng-template #dimage>
                 <img src="assets/Images/house.jpg"/>  
